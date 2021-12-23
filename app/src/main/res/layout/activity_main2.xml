@@ -4,27 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity2">
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_next2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text="NEXT"
+        android:text="next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/btn_back2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -36,17 +26,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-        <Button
-            android:id="@+id/sym_dot2"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/num0"
-            android:layout_marginLeft="-164dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/sym_C"
-            android:text="."
-            android:textSize="9pt" />
-
         <EditText
             android:id="@+id/first_num"
             android:layout_width="120dp"
@@ -57,21 +36,11 @@
             android:textSize="50dp" />
 
         <EditText
-            android:id="@+id/second_num"
-            android:layout_width="120dp"
-            android:layout_height="105dp"
-            android:layout_toRightOf="@id/first_num"
-            android:gravity="center|end"
-            android:hint="0"
-            android:padding="10dp"
-            android:textSize="50dp" />
-
-        <EditText
             android:id="@+id/result"
-            android:layout_width="120dp"
+            android:layout_width="match_parent"
             android:layout_height="105dp"
             android:layout_marginLeft="1dp"
-            android:layout_toRightOf="@id/second_num"
+            android:layout_toRightOf="@id/first_num"
             android:gravity="center|end"
             android:hint="0"
             android:padding="10dp"
@@ -193,46 +162,56 @@
             android:textSize="9pt" />
 
         <Button
-            android:id="@+id/sym_del"
+            android:id="@+id/sym_dot3"
             android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/num0"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="."
+            android:textSize="9pt" />
+
+        <Button
+            android:id="@+id/sym_sqrt"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/sym_exp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/num3"
+            android:text="sqrt"
+            android:textSize="9pt" />
+
+        <Button
+            android:id="@+id/sym_cbrt"
+            android:layout_width="92dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/sym_sqrt"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/num3"
+            android:text="cbrt"
+            android:textSize="9pt" />
+
+        <Button
+            android:id="@+id/sym_pow"
+            android:layout_width="94dp"
             android:layout_height="50dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="240dp"
             android:layout_toRightOf="@id/num3"
-            android:text="/"
+            android:text="x^2"
             android:textSize="9pt" />
 
         <Button
-            android:id="@+id/sym_ymn"
-            android:layout_width="70dp"
+            android:id="@+id/sym_exp"
+            android:layout_width="94dp"
             android:layout_height="50dp"
-            android:layout_below="@id/sym_del"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/num3"
-            android:text="*"
-            android:textSize="9pt" />
-
-        <Button
-            android:id="@+id/sym_minus"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/sym_ymn"
+            android:layout_below="@+id/sym_pow"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/num9"
-            android:text="-"
-            android:textSize="9pt" />
-
-        <Button
-            android:id="@+id/sym_plus"
-            android:layout_width="70dp"
-            android:layout_height="50dp"
-            android:layout_below="@+id/sym_minus"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/sym_equal"
-            android:text="+"
+            android:text="exp"
             android:textSize="9pt" />
 
 
