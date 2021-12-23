@@ -1,249 +1,199 @@
 package com.example.calculator;
 import androidx.appcompat.app.AppCompatActivity;
-import android.annotation.SuppressLint;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import com.example.calculator.R;
 
-public class MainActivity extends AppCompatActivity {
-    boolean fnum=true;
-    String sym="";
-    float summary;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    EditText edFirstNum, edSecondNum, edRezult;
+    Button btnNext, btnBack,btnC, btnOne, btnTwo, btnThree, btnFour, btnFive, btnSix, btnSeven, btnEight, btnNine, btnZero, btnEq, btnDot, btnSum, btnRaz, btnYmn, btnDel;
+    boolean fnum = true;
+    int i = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btnBack = (Button) findViewById(R.id.btn_back2);
+        edFirstNum = (EditText) findViewById(R.id.first_num);
+        edSecondNum = (EditText) findViewById(R.id.second_num);
+        edRezult = (EditText) findViewById(R.id.result);
+        btnNext = (Button) findViewById(R.id.btn_next);
+        btnNext.setOnClickListener(this);
+        btnC = (Button) findViewById(R.id.sym_C);
+        btnC.setOnClickListener(this);
+        btnOne = (Button) findViewById(R.id.num1);
+        btnOne.setOnClickListener(this);
+        btnTwo = (Button) findViewById(R.id.num2);
+        btnTwo.setOnClickListener(this);
+        btnThree = (Button) findViewById(R.id.num3);
+        btnThree.setOnClickListener(this);
+        btnFour = (Button) findViewById(R.id.num4);
+        btnFour.setOnClickListener(this);
+        btnFive = (Button) findViewById(R.id.num5);
+        btnFive.setOnClickListener(this);
+        btnSix = (Button) findViewById(R.id.num6);
+        btnSix.setOnClickListener(this);
+        btnSeven = (Button) findViewById(R.id.num7);
+        btnSeven.setOnClickListener(this);
+        btnEight = (Button) findViewById(R.id.num8);
+        btnEight.setOnClickListener(this);
+        btnNine = (Button) findViewById(R.id.num9);
+        btnNine.setOnClickListener(this);
+        btnZero = (Button) findViewById(R.id.num0);
+        btnZero.setOnClickListener(this);
+        btnEq = (Button) findViewById(R.id.sym_equal);
+        btnEq.setOnClickListener(this);
+        btnSum = (Button) findViewById(R.id.sym_plus);
+        btnSum.setOnClickListener(this);
+        btnRaz = (Button) findViewById(R.id.sym_minus);
+        btnRaz.setOnClickListener(this);
+        btnYmn = (Button) findViewById(R.id.sym_ymn);
+        btnYmn.setOnClickListener(this);
+        btnDel = (Button) findViewById(R.id.sym_del);
+        btnDel.setOnClickListener(this);
+        btnDot = (Button) findViewById(R.id.sym_dot2);
+        btnDot.setOnClickListener(this);
 
-        Button num1 = findViewById(R.id.num1);
-        Button num2 = findViewById(R.id.num2);
-        Button num3 = findViewById(R.id.num3);
-        Button num4 = findViewById(R.id.num4);
-        Button num5 = findViewById(R.id.num5);
-        Button num6 = findViewById(R.id.num6);
-        Button num7 = findViewById(R.id.num7);
-        Button num8 = findViewById(R.id.num8);
-        Button num9 = findViewById(R.id.num9);
-        Button num0 = findViewById(R.id.num0);
-        final Button plus = findViewById(R.id.sym_plus);
-        Button minus = findViewById(R.id.sym_minus);
-        Button ymn = findViewById(R.id.sym_ymn);
-        Button del = findViewById(R.id.sym_del);
-        Button sum = findViewById(R.id.sym_equal);
-        Button delete = findViewById(R.id.sym_C);
-        final TextView first_num = findViewById(R.id.first_num);
-        final TextView second_num= findViewById(R.id.second_num);
-        final TextView result=findViewById(R.id.result);
-
-        plus.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                fnum=!fnum;
-                sym = "plus";
-            }
-        });
-
-        minus.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                fnum = !fnum;
-                sym = "minus";
-            }
-        });
-
-        ymn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                fnum = !fnum;
-                sym = "ymn";
-            }
-        });
-
-        del.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                fnum = !fnum;
-                sym = "del";
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
             }
         });
 
-        delete.setOnClickListener(new View.OnClickListener(){
+        btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                first_num.setText("");
-                second_num.setText("");
-                result.setText("");
-            }
-        });
-
-        num1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="1";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="1";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="2";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="2";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="3";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="3";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="4";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="4";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="5";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="5";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="6";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="6";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num7.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="7";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="7";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num8.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="8";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="8";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num9.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="9";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="9";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-        num0.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(fnum){
-                    String first_num_text=first_num.getText().toString();
-                    first_num_text+="0";
-                    first_num.setText(first_num_text);
-                }else{
-                    String second_num_text=second_num.getText().toString();
-                    second_num_text+="0";
-                    second_num.setText(second_num_text);
-                }
-            }
-        });
-
-        sum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                float first_number=Float.valueOf(first_num.getText().toString());
-                float second_number=Float.valueOf(second_num.getText().toString());
-
-                switch (sym)
-                {
-                    default:
-                        break;
-                    case "plus":
-                        summary = first_number+second_number;
-                        break;
-                    case "minus":
-                        summary = first_number-second_number;
-                        break;
-                    case "ymn":
-                        summary = first_number*second_number;
-                        break;
-                    case "del":
-                        summary = first_number/second_number;
-                        break;
-                }
-                result.setText(String.valueOf(summary));
-                fnum=true;
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity4.class);
+                startActivity(intent);
             }
         });
     }
-}
+        @Override
+        public void onClick(View v){
+            switch (v.getId()) {
+                case R.id.num1:
+                    if (fnum) {
+                        edFirstNum.append("1");
+                    } else {
+                        edSecondNum.append("1");
+                    }
+                    break;
+                case R.id.num2:
+                    if (fnum) {
+                        edFirstNum.append("2");
+                    } else {
+                        edSecondNum.append("2");
+                    }
+                    break;
+                case R.id.num3:
+                    if (fnum) {
+                        edFirstNum.append("3");
+                    } else {
+                        edSecondNum.append("3");
+                    }
+                    break;
+                case R.id.num4:
+                    if (fnum) {
+                        edFirstNum.append("4");
+                    } else {
+                        edSecondNum.append("4");
+                    }
+                    break;
+                case R.id.num5:
+                    if (fnum) {
+                        edFirstNum.append("5");
+                    } else {
+                        edSecondNum.append("5");
+                    }
+                    break;
+
+                case R.id.num6:
+                    if (fnum) {
+                        edFirstNum.append("6");
+                    } else {
+                        edSecondNum.append("6");
+                    }
+                    break;
+                case R.id.num7:
+                    if (fnum) {
+                        edFirstNum.append("7");
+                    } else {
+                        edSecondNum.append("7");
+                    }
+                    break;
+                case R.id.num8:
+                    if (fnum) {
+                        edFirstNum.append("8");
+                    } else {
+                        edSecondNum.append("8");
+                    }
+                    break;
+                case R.id.num9:
+                    if (fnum) {
+                        edFirstNum.append("9");
+                    } else {
+                        edSecondNum.append("9");
+                    }
+                    break;
+                case R.id.num0:
+                    if (fnum) {
+                        edFirstNum.append("0");
+                    } else {
+                        edSecondNum.append("0");
+                    }
+                    break;
+                case R.id.sym_dot2:
+                    if (fnum) {
+                        edFirstNum.append(".");
+                    } else {
+                        edSecondNum.append(".");
+                    }
+                    break;
+
+                case R.id.sym_del:
+                    if (fnum)
+                        fnum = !fnum;
+                    i = 3;
+                    break;
+                case R.id.sym_plus:
+                    if (fnum)
+                        fnum = !fnum;
+                    i = 0;
+                    break;
+                case R.id.sym_minus:
+                    if (fnum)
+                        fnum = !fnum;
+                    i = 1;
+                    break;
+                case R.id.sym_ymn:
+                    if (fnum)
+                        fnum = !fnum;
+                    i = 2;
+                    break;
+                case R.id.sym_equal:
+                    Float ff = 11.3F;
+                    if (i == 0)
+                        ff = Float.valueOf(edFirstNum.getText().toString()) + Float.valueOf(edSecondNum.getText().toString());
+                    if (i == 1)
+                        ff = Float.valueOf(edFirstNum.getText().toString()) - Float.valueOf(edSecondNum.getText().toString());
+                    if (i == 2)
+                        ff = Float.valueOf(edFirstNum.getText().toString()) * Float.valueOf(edSecondNum.getText().toString());
+                    if (i == 3)
+                        ff = Float.valueOf(edFirstNum.getText().toString()) / Float.valueOf(edSecondNum.getText().toString());
+                    edRezult.setText(ff.toString());
+                    break;
+                case R.id.sym_C:
+                    edFirstNum.setText("");
+                    edSecondNum.setText("");
+                    edRezult.setText("");
+                    fnum = true;
+                    break;
+            }
+        }
+    }
